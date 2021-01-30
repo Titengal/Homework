@@ -4,13 +4,13 @@ using System.Text;
 
 namespace DataStructures.DoubleLinkedList
 {
-    class L2Node
+    class Node
     {
         public int Value { get; set; }
-        public L2Node Previous { get; set; }
-        public L2Node Next { get; set; }
+        public Node Previous { get; set; }
+        public Node Next { get; set; }
 
-        public L2Node(int value)
+        public Node(int value)
         {
             Value = value;
             Next = null;

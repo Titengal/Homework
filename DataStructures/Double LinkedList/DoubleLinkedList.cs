@@ -7,8 +7,8 @@ namespace DataStructures.DoubleLinkedList
 {
     public class DoubleLinkedList : DataStructures.IList
     {
-        private L2Node _root;
-        private L2Node end;
+        private Node _root;
+        private Node end;
         private int Length;
 
         public DoubleLinkedList()
@@ -19,7 +19,7 @@ namespace DataStructures.DoubleLinkedList
         }
         public DoubleLinkedList(int a)
         {
-            _root = new L2Node(a);
+            _root = new Node(a);
             end = _root;
             Length = 1;
         }
@@ -27,11 +27,11 @@ namespace DataStructures.DoubleLinkedList
         {
             if (array.Length != 0)
             {
-                _root = new L2Node(array[0]);
-                L2Node tmp = _root;
+                _root = new Node(array[0]);
+                Node tmp = _root;
                 for (int i = 1; i < array.Length; i++)
                 {
-                    tmp.Next = new L2Node(array[i]);
+                    tmp.Next = new Node(array[i]);
                     tmp.Next.Previous = tmp;
                     tmp = tmp.Next;
                 }
@@ -45,7 +45,7 @@ namespace DataStructures.DoubleLinkedList
                 Length = 0;
             }
         }
-        private L2Node EndOrHead(int index)
+        private Node EndOrHead(int index)
         {
             if (index > Length / 2)
             {
@@ -62,13 +62,13 @@ namespace DataStructures.DoubleLinkedList
         {
             if (Length == 0)
             {
-                _root = new L2Node(value);
+                _root = new Node(value);
                 end = _root;
                 Length = 1;
             }
             else
             {
-                end.Next = new L2Node(value);
+                end.Next = new Node(value);
                 end.Next.Previous = end;
                 end = end.Next;
                 Length++;
@@ -80,11 +80,11 @@ namespace DataStructures.DoubleLinkedList
             {
                 if (array.Length != 0)
                 {
-                    _root = new L2Node(array[0]);
-                    L2Node tmp = _root;
+                    _root = new Node(array[0]);
+                    Node tmp = _root;
                     for (int i = 1; i < array.Length; i++)
                     {
-                        tmp.Next = new L2Node(array[i]);
+                        tmp.Next = new Node(array[i]);
                         tmp.Next.Previous = tmp;
                         tmp = tmp.Next;
                     }
@@ -104,7 +104,7 @@ namespace DataStructures.DoubleLinkedList
                 {
                     for (int i = 0; i < array.Length; i++)
                     {
-                        end.Next = new L2Node(array[i]);
+                        end.Next = new Node(array[i]);
                         end.Next.Previous = end;
                         end = end.Next;
                     }
@@ -116,13 +116,13 @@ namespace DataStructures.DoubleLinkedList
         {
             if (Length == 0)
             {
-                _root = new L2Node(value);
+                _root = new Node(value);
                 end = _root;
                 Length = 1;
             }
             else
             {
-                _root.Previous = new L2Node(value);
+                _root.Previous = new Node(value);
                 _root.Previous.Next = _root;
                 _root = _root.Previous;
                 Length++;
@@ -134,11 +134,11 @@ namespace DataStructures.DoubleLinkedList
             {
                 if (array.Length != 0)
                 {
-                    _root = new L2Node(array[0]);
-                    L2Node tmp = _root;
+                    _root = new Node(array[0]);
+                    Node tmp = _root;
                     for (int i = 1; i < array.Length; i++)
                     {
-                        tmp.Next = new L2Node(array[i]);
+                        tmp.Next = new Node(array[i]);
                         tmp.Next.Previous = tmp;
                         tmp = tmp.Next;
                     }
@@ -156,11 +156,11 @@ namespace DataStructures.DoubleLinkedList
             {
                 if (array.Length != 0)
                 {
-                    L2Node tmp = new L2Node(array[0]);
-                    L2Node b = tmp;
+                    Node tmp = new Node(array[0]);
+                    Node b = tmp;
                     for (int i = 1; i < array.Length; i++)
                     {
-                        tmp.Next = new L2Node(array[i]);
+                        tmp.Next = new Node(array[i]);
                         tmp.Next.Previous = tmp;
                         tmp = tmp.Next;
                     }
@@ -189,13 +189,13 @@ namespace DataStructures.DoubleLinkedList
                     {
                         if (index <= Length / 2)
                         {
-                            L2Node tmp = _root;
+                            Node tmp = _root;
                             for (int i = 1; i < index; i++)
                             {
                                 tmp = tmp.Next;
                             }
-                            L2Node b = tmp.Next;
-                            tmp.Next = new L2Node(value);
+                            Node b = tmp.Next;
+                            tmp.Next = new Node(value);
                             tmp.Next.Previous = tmp;
                             tmp = tmp.Next;
                             tmp.Next = b;
@@ -204,13 +204,13 @@ namespace DataStructures.DoubleLinkedList
                         }
                         else
                         {
-                            L2Node tmp = end;
+                            Node tmp = end;
                             for (int i = Length - 1; i > index; i--)
                             {
                                 tmp = tmp.Previous;
                             }
-                            L2Node b = tmp.Previous;
-                            tmp.Previous = new L2Node(value);
+                            Node b = tmp.Previous;
+                            tmp.Previous = new Node(value);
                             tmp.Previous.Next = tmp;
                             tmp = tmp.Previous;
                             tmp.Previous = b;
@@ -239,15 +239,15 @@ namespace DataStructures.DoubleLinkedList
                     {
                         if (index <= Length / 2)
                         {
-                            L2Node tmp = _root;
+                            Node tmp = _root;
                             for (int i = 1; i < index; i++)
                             {
                                 tmp = tmp.Next;
                             }
-                            L2Node b = tmp.Next;
+                            Node b = tmp.Next;
                             for (int i = 0; i < addArray.Length; i++)
                             {
-                                tmp.Next = new L2Node(addArray[i]);
+                                tmp.Next = new Node(addArray[i]);
                                 tmp.Next.Previous = tmp;
                                 tmp = tmp.Next;
                             }
@@ -257,15 +257,15 @@ namespace DataStructures.DoubleLinkedList
                         }
                         else
                         {
-                            L2Node tmp = end;
+                            Node tmp = end;
                             for (int i = Length - 1; i > index; i--)
                             {
                                 tmp = tmp.Previous;
                             }
-                            L2Node b = tmp.Previous;
+                            Node b = tmp.Previous;
                             for (int i = addArray.Length - 1; i >= 0; i--)
                             {
-                                tmp.Previous = new L2Node(addArray[i]);
+                                tmp.Previous = new Node(addArray[i]);
                                 tmp.Previous.Next = tmp;
                                 tmp = tmp.Previous;
                             }
@@ -361,7 +361,7 @@ namespace DataStructures.DoubleLinkedList
                 {
                     if (quantity != 0)
                     {
-                        L2Node tmp = _root;
+                        Node tmp = _root;
                         for (int i = 0; i < quantity - 1; i++)
                         {
                             tmp = tmp.Next;
@@ -388,7 +388,7 @@ namespace DataStructures.DoubleLinkedList
                 {
                     if (index <= Length / 2)
                     {
-                        L2Node tmp = _root;
+                        Node tmp = _root;
                         for (int i = 1; i < index; i++)
                         {
                             tmp = tmp.Next;
@@ -399,7 +399,7 @@ namespace DataStructures.DoubleLinkedList
                     }
                     else
                     {
-                        L2Node tmp = end;
+                        Node tmp = end;
                         for (int i = Length - 1; i > index; i--)
                         {
                             tmp = tmp.Previous;
@@ -431,14 +431,14 @@ namespace DataStructures.DoubleLinkedList
                 {
                     if (quantity <= Length / 2)
                     {
-                        L2Node tmp = _root;
+                        Node tmp = _root;
                         for (int i = 1; i < index; i++)
                         {
                             tmp = tmp.Next;
                         }
                         if (Length > index + quantity)
                         {
-                            L2Node b = tmp.Next;
+                            Node b = tmp.Next;
                             for (int i = 1; i < quantity; i++)
                             {
                                 b = b.Next;
@@ -458,12 +458,12 @@ namespace DataStructures.DoubleLinkedList
                     {
                         if (Length > index + quantity)
                         {
-                            L2Node tmp = end;
+                            Node tmp = end;
                             for (int i = Length - 1; i > index + quantity; i--)
                             {
                                 tmp = tmp.Previous;
                             }
-                            L2Node b = tmp.Previous;
+                            Node b = tmp.Previous;
                             for (int i = 1; i < quantity; i++)
                             {
                                 b = b.Previous;
@@ -474,7 +474,7 @@ namespace DataStructures.DoubleLinkedList
                         }
                         else
                         {
-                            L2Node tmp = end;
+                            Node tmp = end;
                             for (int i = Length; i > index; i--)
                             {
                                 tmp = tmp.Previous;
@@ -504,7 +504,7 @@ namespace DataStructures.DoubleLinkedList
         }
         public int GetIndexByValue(int value)
         {
-            L2Node tmp = _root;
+            Node tmp = _root;
             if (Length == 0)
             {
                 throw new Exception("List is empty");
@@ -528,7 +528,7 @@ namespace DataStructures.DoubleLinkedList
                 throw new Exception("List is empty");
             }
 
-            L2Node tmp = _root;
+            Node tmp = _root;
             for (int i = 0; i < Length; i++)
             {
                 if (i == index)
@@ -548,7 +548,7 @@ namespace DataStructures.DoubleLinkedList
             }
             else
             {
-                L2Node prev = null, current = _root, next;
+                Node prev = null, current = _root, next;
                 while (current != null)
                 {
                     next = current.Next;
@@ -568,7 +568,7 @@ namespace DataStructures.DoubleLinkedList
                 {
                     throw new IndexOutOfRangeException();
                 }
-                L2Node tmp = EndOrHead(index);
+                Node tmp = EndOrHead(index);
                 if (tmp == _root)
                 {
                     for (int i = 0; i < index; i++)
@@ -592,7 +592,7 @@ namespace DataStructures.DoubleLinkedList
                 {
                     throw new IndexOutOfRangeException();
                 }
-                L2Node tmp = EndOrHead(index);
+                Node tmp = EndOrHead(index);
                 if (tmp == _root)
                 {
                     for (int i = 0; i < index; i++)
@@ -617,7 +617,7 @@ namespace DataStructures.DoubleLinkedList
             if (_root != null)
             {
                 min = _root.Value;
-                L2Node tmp = _root;
+                Node tmp = _root;
                 while (tmp != null)
                 {
                     if (min > tmp.Value)
@@ -636,7 +636,7 @@ namespace DataStructures.DoubleLinkedList
             {
                 int index = 0;
                 int min = _root.Value;
-                L2Node tmp = _root;
+                Node tmp = _root;
                 while (tmp != null)
                 {
                     if (min > tmp.Value)
@@ -657,7 +657,7 @@ namespace DataStructures.DoubleLinkedList
         public int FindMax()
         {
             int max = 0;
-            L2Node tmp = _root;
+            Node tmp = _root;
             while (tmp != null)
             {
                 if (max < tmp.Value)
@@ -675,7 +675,7 @@ namespace DataStructures.DoubleLinkedList
             {
                 int index = 0;
                 int max = 0;
-                L2Node tmp = _root;
+                Node tmp = _root;
                 while (tmp != null)
                 {
                     if (max < tmp.Value)
@@ -697,7 +697,7 @@ namespace DataStructures.DoubleLinkedList
         {
             if (Length != 0)
             {
-                L2Node tmp = _root;
+                Node tmp = _root;
                 int l = 0;
                 while (tmp.Next != null)
                 {
@@ -720,7 +720,7 @@ namespace DataStructures.DoubleLinkedList
         {
             if (Length != 0)
             {
-                L2Node tmp = _root;
+                Node tmp = _root;
                 while (tmp.Next != null)
                 {
                     if (tmp.Value < tmp.Next.Value)
@@ -745,7 +745,7 @@ namespace DataStructures.DoubleLinkedList
             }
             if (Length != 0)
             {
-                L2Node tmp = _root;
+                Node tmp = _root;
                 while (tmp.Next.Value != value && tmp.Next != null)
                 {
                     tmp = tmp.Next;
@@ -783,9 +783,9 @@ namespace DataStructures.DoubleLinkedList
                 }
                 else
                 {
-                    L2Node tmp = _root;
+                    Node tmp = _root;
                     int b = Length;
-                    L2Node c;
+                    Node c;
                     for (int i = 1; i < b - 1; i++)
                     {
                         if (tmp.Next.Value == value)
@@ -820,7 +820,7 @@ namespace DataStructures.DoubleLinkedList
             if (Length != 0)
             {
                 int i = 0;
-                L2Node tmp = _root;
+                Node tmp = _root;
                 do
                 {
                     array[i] = tmp.Value;
@@ -844,8 +844,8 @@ namespace DataStructures.DoubleLinkedList
                 return false;
             }
 
-            L2Node tmp1 = _root;
-            L2Node tmp2 = doubleLinkedList._root;
+            Node tmp1 = _root;
+            Node tmp2 = doubleLinkedList._root;
 
             for (int i = 0; i < Length; i++)
             {
@@ -862,7 +862,7 @@ namespace DataStructures.DoubleLinkedList
         {
             string s = "";
 
-            L2Node tmp = _root;
+            Node tmp = _root;
             for (int i = 0; i < Length; i++)
             {
                 s += tmp.Value + ";";
